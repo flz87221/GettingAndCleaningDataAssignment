@@ -44,7 +44,7 @@ finalData$activity <- factor(finalData$activity, levels = activityName[,1], labe
 # requirement 4. appropriately labels the data set with descriptive variable names
 names(finalData) <- gsub("\\()", "", names(finalData))
 names(finalData) <- gsub("^t", "Time", names(finalData))
-names(finalData) <- gsub("^f", "Frequence", names(finalData))
+names(finalData) <- gsub("^f", "Frequency", names(finalData))
 names(finalData) <- gsub("-mean", "Mean", names(finalData))
 names(finalData) <- gsub("-std", "Std", names(finalData))
 
@@ -53,4 +53,4 @@ groupData <- finalData %>%
     group_by(subject, activity) %>%
     summarise_all(funs(mean))
 
-write.table(groupData, "./uci_har_meandata.txt")
+write.table(groupData, "./uci_har_meandata.txt", row.name=FALSE)
